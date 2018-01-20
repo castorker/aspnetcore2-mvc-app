@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DutchArtistsMasterpieces.Models.Artist>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @foreach (var artist in Model)
+        {
+            <div>
+                <h2>@artist.Name</h2>
+                <h3>@artist.City</h3>
+                <h4>@artist.BirthYear - @artist.DeathYear</h4>
+            </div>
+        }
+    </div>
+</body>
+</html>
