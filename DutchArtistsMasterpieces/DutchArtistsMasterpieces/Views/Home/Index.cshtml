@@ -4,11 +4,11 @@
 <br />
 @foreach (var artist in Model.Artists)
 {
-    <div>
-        <div>
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
             <img src="@artist.ImageThumbnailUrl" alt="">
-            <div>
-                <h3>@artist.BirthYear - @artist.DeathYear</h3>
+            <div class="caption">
+                <h3 class="pull-right">@artist.BirthYear - @artist.DeathYear</h3>
                 <h3>
                     @artist.Name
                 </h3>
