@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DutchArtistsMasterpieces.Models;
+using DutchArtistsMasterpieces.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -21,11 +22,15 @@ namespace DutchArtistsMasterpieces.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            ViewBag.Title = "Artist overview";
+            var artists = _artistRepository.GetAllArtists().OrderBy(a => a.Id);
 
-            var artists = _artistRepository.GetAllArtists().OrderBy(a => a.Name);
+            var homeViewModel = new HomeViewModel()
+            {
+                Title = "Famous Dutch Artists and their Masterpieces",
+                Artists = artists.ToList()
+            };
 
-            return View(artists);
+            return View(homeViewModel);
         }
     }
 }

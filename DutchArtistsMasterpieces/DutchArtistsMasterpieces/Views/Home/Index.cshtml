@@ -1,20 +1,23 @@
-﻿@model IEnumerable<DutchArtistsMasterpieces.Models.Artist>
+﻿@model DutchArtistsMasterpieces.ViewModels.HomeViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@ViewBag.Title</title>
-</head>
-<body>
+<h2>@Model.Title</h2>
+<br />
+@foreach (var artist in Model.Artists)
+{
     <div>
-        @foreach (var artist in Model)
-        {
+        <div>
+            <img src="@artist.ImageThumbnailUrl" alt="">
             <div>
-                <h2>@artist.Name</h2>
-                <h3>@artist.City</h3>
-                <h4>@artist.BirthYear - @artist.DeathYear</h4>
+                <h3>@artist.BirthYear - @artist.DeathYear</h3>
+                <h3>
+                    @artist.Name
+                </h3>
+                <h4>
+                    @artist.City
+                </h4>
+                <p>@artist.ShortDescription</p>
             </div>
-        }
+        </div>
     </div>
-</body>
-</html>
+}
+
