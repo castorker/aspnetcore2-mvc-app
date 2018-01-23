@@ -32,5 +32,16 @@ namespace DutchArtistsMasterpieces.Controllers
 
             return View(homeViewModel);
         }
+
+        public IActionResult Details(int id)
+        {
+            var artist = _artistRepository.GetArtistById(id);
+            if (artist == null)
+            {
+                return NotFound();
+            }
+
+            return View(artist);
+        }
     }
 }
