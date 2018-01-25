@@ -28,6 +28,7 @@ namespace DutchArtistsMasterpieces
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddTransient<IArtistRepository, ArtistRepository>();
+            services.AddTransient<IArtworkRepository, ArtworkRepository>();
 
             services.AddMvc();
         }

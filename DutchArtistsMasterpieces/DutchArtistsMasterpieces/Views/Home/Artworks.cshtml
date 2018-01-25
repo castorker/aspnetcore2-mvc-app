@@ -1,0 +1,29 @@
+﻿@model ArtworksViewModel
+
+<h2>@Model.Title</h2>
+<br />
+<div class="col-sm-12 col-lg-12 col-md-12 thumbnail">
+    <div class="col-sm-2 col-lg-2 col-md-2">
+        <img src="@Model.Artist.ImageThumbnailUrl" alt="@Model.Artist.Name" class="img-thumbnail">
+    </div>
+
+    <div class="col-sm-10 col-lg-10 col-md-10">
+        <h3 class="pull-right">@Model.Artist.BirthYear - @Model.Artist.DeathYear</h3>
+        <h3>
+            <a asp-controller="Home" asp-action="Details" asp-route-id="@Model.Artist.Id">@Model.Artist.Name</a>
+        </h3>
+        <h4>@Model.Artist.City</h4>
+        <p>@Model.Artist.ShortDescription</p>
+    </div>
+</div>
+
+@foreach (var artwork in Model.Artworks)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <img src="@artwork.ImageUrl" alt="@artwork.Title" class="img-thumbnail thumbnail">
+        <h4>@artwork.Title, @artwork.Year</h4>
+        <p><strong>@artwork.ShortDescription</strong></p>
+        <p style="color:brown"><strong>@artwork.LongDescription</strong></p>
+        <p class="pull-right">@artwork.Source</p>
+    </div>
+}

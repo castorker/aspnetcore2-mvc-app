@@ -14,5 +14,6 @@ namespace DutchArtistsMasterpieces.Models
         }
 
         public DbSet<Artist> Artists { get; set; }
+        public DbSet<Artwork> Artworks { get; set; }
     }
 }

@@ -13,10 +13,12 @@ namespace DutchArtistsMasterpieces.Controllers
     public class HomeController : Controller
     {
         private readonly IArtistRepository _artistRepository;
+        private readonly IArtworkRepository _artworkRepository;
 
-        public HomeController(IArtistRepository artistRepository)
+        public HomeController(IArtistRepository artistRepository, IArtworkRepository artworkRepository)
         {
             _artistRepository = artistRepository;
+            _artworkRepository = artworkRepository;
         }
 
         // GET: /<controller>/
@@ -36,12 +38,29 @@ namespace DutchArtistsMasterpieces.Controllers
         public IActionResult Details(int id)
         {
             var artist = _artistRepository.GetArtistById(id);
+
             if (artist == null)
             {
                 return NotFound();
             }
 
             return View(artist);
+        }
+
+        public IActionResult Artworks(int id)
+        {
+            var artist = _artistRepository.GetArtistById(id);
+
+            var artworks = _artworkRepository.GetAllArtworksByArtistId(id).OrderBy(a => a.Year);
+
+            var artworksViewModel = new ArtworksViewModel()
+            {
+                Title = $"{artist.Name} masterpieces",
+                Artist = artist,
+                Artworks = artworks.ToList()
+            };
+
+            return View(artworksViewModel);
         }
     }
 }
