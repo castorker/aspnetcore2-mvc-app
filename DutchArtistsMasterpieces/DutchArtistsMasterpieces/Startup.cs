@@ -29,6 +29,7 @@ namespace DutchArtistsMasterpieces
 
             services.AddTransient<IArtistRepository, ArtistRepository>();
             services.AddTransient<IArtworkRepository, ArtworkRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
 
             services.AddMvc();
         }
